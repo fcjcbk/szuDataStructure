@@ -21,7 +21,7 @@ int main(){
             close.emplace_back(date(s,a,b));
         }
     }
-    auto p=[](date&lhs,date&rhs){
+    auto p=[](const date&lhs,const date&rhs){
         return lhs.s<rhs.s;
     };
     sort(open.begin(),open.end(),p);
