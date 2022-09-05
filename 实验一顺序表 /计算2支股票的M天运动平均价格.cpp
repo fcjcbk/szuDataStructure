@@ -1,26 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 struct date{
-    int year,month,day;
     int s1,s2;
     string s;
-    date(string s,int s1,int s2):s1(s1),s2(s2),s(s){
-        int k1=0,k2=0;
-        for(int j=0;j<s.size();j++){
-            if(k1!=0&&s[j]=='/'){
-                k2=j;
-                break;
-            }
-            if(s[j]=='/'){
-                k1=j;
-            }
-            
-
-        }
-        year=stoi(s.substr(0,k1));
-        month=stoi(s.substr(k1+1,k2-k1-1));
-        day=stoi(s.substr(k2+1,s.size()-k2-1));
-    }
+    date(string s,int s1,int s2):s1(s1),s2(s2),s(s){}
 };
 int main(){
     vector<date> open;
@@ -39,24 +22,7 @@ int main(){
         }
     }
     auto p=[](date&lhs,date&rhs){
-        if(lhs.year<rhs.year){
-            return true;
-        }else if(lhs.year>rhs.year){
-            return false;
-        }else{
-            if(lhs.month<rhs.month){
-                return true;
-            }else if(rhs.month>rhs.month){
-                return false;
-            }else{
-                if(lhs.day<rhs.day){
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-        }
-        return false;
+        return lhs.s<rhs.s;
     };
     sort(open.begin(),open.end(),p);
     sort(close.begin(),close.end(),p);
